@@ -1,8 +1,8 @@
 class DateFactory
 {
     /**
-     * @param null $date
-     * @param null $timezone
+     * @param String || null $date A valid date string
+     * @param String || null $timezone A valid TimeZone string
      * @return DateTime
      * @throws InvalidArgumentException
      */
