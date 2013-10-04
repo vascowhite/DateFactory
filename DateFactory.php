@@ -27,10 +27,3 @@ class DateFactory
         return $date;
     }
 }
-
-$DateFactory = new DateFactory();
-var_dump($DateFactory->getDate());
-var_dump($DateFactory->getDate(null, 'Europe/London'));
-var_dump($DateFactory->getDate('4/10/2013'));
-var_dump($DateFactory->getDate('4/10/2013', 'Europe/London'));
-var_dump($DateFactory->getDate('30/2/2013'));
