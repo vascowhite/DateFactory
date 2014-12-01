@@ -59,7 +59,7 @@ class DateFactoryTest extends \PHPUnit_Framework_TestCase
         $testDate = DateFactory::getDate('2014-12-25 12:00', 'Europe/London');
         $this->assertInstanceOf('\DateTime', $testDate);
     }
-    
+
     public function testWillReturnFalseForInvalidDateString()
     {
         $this->assertFalse(DateFactory::getDate('2014-13-25'));

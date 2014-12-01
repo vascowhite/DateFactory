@@ -40,7 +40,7 @@ class DateFactory
      * @param null || String $timezone A valid TimeZone string from this list http://php.net/manual/en/timezones.php
      * @throws InvalidArgumentException
      *
-     * @return DateTime
+     * @return bool || DateTime  Returns a \DateTime object or false if an invalid string is passed.
      */
     public static function getDate($dateString = null, $timezone = null)
     {
