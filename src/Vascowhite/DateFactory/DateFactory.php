@@ -63,7 +63,7 @@ class DateFactory
             if(checkdate((int)$month, (int)$day, (int)$year)){
                 $date = \DateTime::createFromFormat(self::FORMAT, $dateString, $tz);
             } else {
-                throw new \InvalidArgumentException('Invalid date string passed');
+                return false;
             }
         }
         return $date;
