@@ -1,0 +1,19 @@
+{
+    "name": "vascowhite/datefactory",
+    "description": "A factory for DateTime objects",
+    "authors": [
+        {
+            "name": "Paul White",
+            "email": "paul@vascowhite.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Vascowhite\\DateFactory": "src/" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "dev-master"
+    }
+}
