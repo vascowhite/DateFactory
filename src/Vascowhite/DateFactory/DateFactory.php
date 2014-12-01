@@ -32,6 +32,9 @@ namespace Vascowhite\DateFactory;
 
 class DateFactory
 {
+    /** @const String DateTime format */
+    const FORMAT = 'Y-m-d H:i:s';
+
     /**
      * @param null || String $date A valid date string in the format Y-m-d H:i:s
      * @param null || String $timezone A valid TimeZone string from this list http://php.net/manual/en/timezones.php
@@ -39,9 +42,6 @@ class DateFactory
      *
      * @return DateTime
      */
-
-    const FORMAT = 'Y-m-d H:i:s';
-
     public static function getDate($dateString = null, $timezone = null)
     {
         if(!$timezone){
