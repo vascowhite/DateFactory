@@ -47,7 +47,7 @@ class DateFactory
         if(!$timezone){
             $tz = new \DateTimeZone(date_default_timezone_get());
         } else {
-            if(!self::checkTZStingIsValid($timezone)){
+            if(!self::checkTZStringIsValid($timezone)){
                 throw new \InvalidArgumentException('Invalid TimeZone string passed');
             }
             $tz = new \DateTimeZone($timezone);
@@ -73,7 +73,7 @@ class DateFactory
      * @param String $TZString
      * @return bool
      */
-    private static function checkTZStingIsValid($TZString)
+    private static function checkTZStringIsValid($TZString)
     {
         return in_array($TZString, \DateTimeZone::listIdentifiers());
     }
