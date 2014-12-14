@@ -1,18 +1,28 @@
 {
     "name": "vascowhite/datefactory",
-    "description": "A factory for DateTime objects",
+    "description": "A factory class for DateTime objects.",
+    "keywords": [
+        "DateTime"
+    ],
+    "support": {
+        "issues": "https://github.com/vascowhite/DateFactory/issues"
+    },
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Paul White",
-            "email": "paul@vascowhite.co.uk"
+            "email": "paul@vascowhite.co.uk",
+            "homepage": "http://www.vascowhite.co.uk",
+            "role": "developer"
         }
     ],
     "autoload": {
-        "psr-0": { "Vascowhite\\DateFactory": "src/" }
+        "psr-0": {
+            "Vascowhite\\DateFactory": "src/"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require": {},
     "require-dev": {
         "phpunit/phpunit": "*"
     }
