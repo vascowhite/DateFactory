@@ -32,9 +32,6 @@ namespace Vascowhite\DateFactory;
 
 class DateFactory
 {
-    /** @const String DateTime format */
-    const FORMAT = 'Y-m-d H:i:s';
-
     /**
      * @param String $dateString A dateString string
      * @param String $format A format understood by \DateTime::createFromFormat()
