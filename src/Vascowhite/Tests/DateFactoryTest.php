@@ -33,36 +33,32 @@ use Vascowhite\DateFactory\DateFactory;
 
 class DateFactoryTest extends \PHPUnit_Framework_TestCase
 {
-    public function testCanGetDateWithNullParameters()
-    {
-        $testDate = DateFactory::getDate();
-        $this->assertInstanceOf('\DateTime', $testDate);
-    }
+    private $format = 'Y-m-d H:i:s';
 
     public function testCanGetDateWithNoTimeZone()
     {
-        $testDate = DateFactory::getDate('2014-12-25 12:00:00');
-        $this->assertInstanceOf('\DateTime', $testDate);
+        $testDate = DateFactory::getDate('2014-12-25 12:00:00', $this->format);
+        $this->assertInstanceOf(
+            '\DateTime',
+            $testDate
+        );
     }
 
     public function testCanGetDateWithValidTimeZone()
     {
-        $testDate = DateFactory::getDate('2014-12-25 12:00:00', 'Europe/London');
-        $this->assertInstanceOf('\DateTime', $testDate);
-    }
-
-    public function testCanGetDateWithIncompleteTime()
-    {
-        $testDate = DateFactory::getDate('2014-12-25', 'Europe/London');
-        $this->assertInstanceOf('\DateTime', $testDate);
-
-        $testDate = DateFactory::getDate('2014-12-25 12:00', 'Europe/London');
-        $this->assertInstanceOf('\DateTime', $testDate);
+        $testDate = DateFactory::getDate('2014-12-25 12:00:00', $this->format, 'Europe/London');
+        $this->assertInstanceOf(
+            '\DateTime',
+            $testDate
+        );
     }
 
     public function testWillReturnFalseForInvalidDateString()
     {
-        $this->assertFalse(DateFactory::getDate('2014-13-25'));
+        $this->assertFalse(
+            DateFactory::getDate('2014-13-25', $this->format),
+            "Invalid date string did not return false"
+        );
     }
 
     /**
@@ -71,7 +67,22 @@ class DateFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testWillThrowExceptionsForInvalidTimeZoneString()
     {
-        $testDate = DateFactory::getDate(null, 'invalidtimezonestring');
+        DateFactory::getDate('2014-12-25 12:00:00', $this->format, 'invalidtimezonestring');
+    }
+
+    public function testNonsenseDateReturnsFalse()
+    {
+        $this->assertFalse(
+            DateFactory::getDate('9999-99-99 12:00:00', $this->format),
+            "Nonsense date did not return false"
+        );
+    }
+
+    public function testInvalidFormatStringReturnsFalse()
+    {
+        $this->assertFalse(
+            DateFactory::getDate('2014-12-25 12:00:00', 'invalid format'),
+            "Invalid format string did not return false"
+        );
     }
 }
- 

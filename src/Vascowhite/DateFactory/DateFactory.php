@@ -25,7 +25,7 @@
  */
  
  /**
-  * @package 
+  * @package datefactory
   */
 
 namespace Vascowhite\DateFactory;
@@ -36,13 +36,14 @@ class DateFactory
     const FORMAT = 'Y-m-d H:i:s';
 
     /**
-     * @param null || String $date A valid date string in the format Y-m-d H:i:s
+     * @param String $dateString A dateString string
+     * @param String $format A format understood by \DateTime::createFromFormat()
      * @param null || String $timezone A valid TimeZone string from this list http://php.net/manual/en/timezones.php
      * @throws InvalidArgumentException
      *
-     * @return bool || DateTime  Returns a \DateTime object or false if an invalid string is passed.
+     * @return bool || DateTime  Returns a \DateTime object or false on failure.
      */
-    public static function getDate($dateString = null, $timezone = null)
+    public static function getDate($dateString, $format, $timezone = null)
     {
         if(!$timezone){
             $tz = new \DateTimeZone(date_default_timezone_get());
@@ -53,20 +54,10 @@ class DateFactory
             $tz = new \DateTimeZone($timezone);
         }
 
-        if(!$dateString){
-            $date = new \DateTime(null, $tz);
-        } else {
-            $dateString = self::fixTime($dateString);
-
-            list($year, $month, $day) = explode('-', explode(' ', $dateString)[0]);
-
-            if(checkdate((int)$month, (int)$day, (int)$year)){
-                $date = \DateTime::createFromFormat(self::FORMAT, $dateString, $tz);
-            } else {
-                return false;
-            }
+        if($format && self::validateDate($dateString, $format)){
+            return \DateTime::createFromFormat($format, $dateString, $tz);
         }
-        return $date;
+        return false;
     }
 
     /**
@@ -79,18 +70,18 @@ class DateFactory
     }
 
     /**
-     * @param String $dateString
-     * @return string
+     * Checks that the date string supplied is compatible with the format.
+     *
+     * Thanks to Glavik for this comment
+     * http://php.net/manual/en/function.checkdate.php#113205
+     *
+     * @param string $dateString
+     * @param string $format
+     * @return bool
      */
-    private static function fixTime($dateString)
+    private static function validateDate($dateString, $format = 'Y-m-d H:i:s')
     {
-        $split = explode(' ', $dateString);
-        if(!isset($split[1])){
-            return $dateString . ' 00:00:00';
-        }
-        if(count(explode(':', $split[1])) < 3){
-            return $dateString . ':00';
-        }
-        return $dateString;
+        $d = \DateTime::createFromFormat($format, $dateString);
+        return $d && $d->format($format) == $dateString;
     }
 }
