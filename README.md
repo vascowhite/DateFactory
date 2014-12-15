@@ -19,13 +19,13 @@ There is just one public method:
 ####DateFactory::getDate()
 __Signature:-__
 ```php
-TimeValue __construct(String $date, String $format = 'Y-m-d H:i:s', [String $timeZone])
+DateTime DateFactory::getDate(String $date, String $format, [String $timeZone])
 ```
 
 __Arguments__
 `$date` is a string representing a date/time, e.g. '2014-14 14:12:10'.
-`$format` Optional format string, defaults to 'Y-m-d H:i:s'. Available formats are any available for [`\DateTime::createFromFormat()`](http://php.net/manual/en/datetime.createfromformat.php).
-`$timeZone` A valid Time Zone identifier from [this list](http://php.net/manual/en/timezones.php).
+`$format` Format string. Available formats are any available for [`\DateTime::createFromFormat()`](http://php.net/manual/en/datetime.createfromformat.php).
+`$timeZone` Optional. A valid Time Zone identifier from [this list](http://php.net/manual/en/timezones.php).
 
 __Example__
 ```php
