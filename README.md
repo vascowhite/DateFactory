@@ -33,9 +33,6 @@ $dateTime = DateFactory::getDate('2014-12-25 12:00:00',  'Y-m-d H:i:s', 'Europe/
 ```
 
 __Return__
-Returns a `TimeValue` object or false on failure.
-
-__Throws__
-`\InvalidArgumentException` if passed an invalid Time Zone string.
+Returns a `DateTime` object or false on failure.
 
 ---
