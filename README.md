@@ -6,7 +6,7 @@ Install using composer, add the following to composer.json:-
 
 ```json
 "require": {
-    "vascowhite/datefactory": "dev-master"
+    "vascowhite/datefactory": "v1.1.x"
 }
 ```
 
