@@ -17,8 +17,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Vascowhite\\DateFactory": "src/"
+        "psr-4": {
+            "Vascowhite\\DateFactory\\": "./src/DateFactory"
         }
     },
     "minimum-stability": "dev",
